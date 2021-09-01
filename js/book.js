@@ -16,13 +16,13 @@ searchBtn.addEventListener('click', function () {
         return;
     }
 
-    //   Clear
+    //   Clear the field
     bookContainer.innerHTML = '';
     searchInput.value = '';
     resultCount.innerHTML = '';
 
 
-    //  Fetch api
+    //  Fetch Book Api
     const url = `http://openlibrary.org/search.json?q=${searchText}`;
 
     fetch(url)
@@ -31,7 +31,7 @@ searchBtn.addEventListener('click', function () {
 });
 
 const showData = (data) => {
-
+    // No result error handle
     if (Object.keys(data).length === 0) {
         const errordiv = document.createElement("div");
         errordiv.innerHTML = `<h6>NO Result Found</h6><br>`
@@ -51,7 +51,7 @@ const showData = (data) => {
         <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">${book.title}</h5>
-            <p class="card-text"> ${book.author_name[0]}</p>
+            <p class="card-text"> ${book.author_name ? book.author_name : ''}</p>
             <p class="card-text">${book.first_publish_year ? book.first_publish_year : ''}</p>
         </div>
         </div>
