@@ -12,13 +12,17 @@ searchBtn.addEventListener('click', function () {
 
     // Error handling
     if (searchText === "") {
-        errorDiv.innerText = "Search field cannot be empty.";
+        errorDiv.innerHTML = `<h3 class="text-white">Search field cannot be empty.</h3>;`;
+
+        resultCount.innerHTML = '';
+        bookContainer.innerHTML = '';
         return;
     }
 
     //   Clear the field
     bookContainer.innerHTML = '';
     searchInput.value = '';
+    errorDiv.innerHTML = '';
     resultCount.innerHTML = '';
 
 
@@ -34,7 +38,7 @@ const showData = (data) => {
     // No result error handle
     if (Object.keys(data).length === 0) {
         const errordiv = document.createElement("div");
-        errordiv.innerHTML = `<h6>NO Result Found</h6><br>`
+        errordiv.innerHTML = `<h6 class="text-white>NO Result Found</h6><br>`
         errorDiv.appendChild(errordiv);
     } else {
         errorDiv.innerText = "";
@@ -63,7 +67,7 @@ const showData = (data) => {
 
     // Total result count
     const serchCount = document.createElement("div");
-    serchCount.innerHTML = `<h5 class ="mx-auto"> ${Object.keys(data).length} result found</h5> <br>`;
+    serchCount.innerHTML = `<h5 class ="mx-auto text-white"> ${Object.keys(data).length} result found</h5> <br>`;
     resultCount.appendChild(serchCount);
 
 }
